@@ -214,31 +214,8 @@ function trimString(inputString, maxLength) {
   }
 }
 
-
-
-
-
-/**
- * Middleware function to check if the user is not authenticated.
- *
- * @param {Object} req - Express request object.
- * @param {Object} res - Express response object.
- * @param {function} next - Express next middleware function.
- */
-// function checkNotAuthenticated(req, res, next) {
-//   const token = req.cookies.jwt;
-
-//   // If a token is present, the user is already authenticated, so redirect to the home page
-//   if (token) {
-//     return res.redirect("/");
-//   }
-
-//   // If no token is present, continue to the next middleware
-//   next();
-// }
-
 //Routing to home page
-app.get("/", checkAuthenticated, (req, res) => {
+app.get("/", (req, res) => {
   res.redirect("/api/movies/");
 });
 
@@ -250,7 +227,7 @@ app.get("/logout",checkAuthenticated, function (req, res) {
       return next(err);
     }
     res.clearCookie("jwt");
-    res.redirect("/login");
+    res.redirect("/");
   });
 });
 
@@ -282,7 +259,7 @@ const upload = multer({ storage: storage });
 //Getting all the movies based on the page count , per page along with title if provided 
 app.get(
   "/api/movies/",
-  checkAuthenticated,
+  
   celebrate({
     [Segments.QUERY]: Joi.object().keys({
       page: Joi.number().integer().min(1),
@@ -356,7 +333,7 @@ app.get(
 //Getting all the movie list based on the provided type 
 app.get(
   "/api/movies/type",
-  checkAuthenticated,
+  
   celebrate({
     [Segments.QUERY]: Joi.object().keys({
       page: Joi.number().integer().min(1),
@@ -525,7 +502,7 @@ app.get("/setTocken",  (req, res) => {
 
 
 //Display the details of the a particular movie
-app.get("/api/movies/:id", checkAuthenticated, async (req, res) => {
+app.get("/api/movies/:id", async (req, res) => {
   try {
     const movieId = req.params.id;
 
@@ -539,9 +516,22 @@ app.get("/api/movies/:id", checkAuthenticated, async (req, res) => {
 
     // Return the movie object
     console.log(movie);
-    const isSameAuthor =
-      req.user._id == movie.authorid ? "isauther" : "isNotauther";
-    console.log(req.user._id + "   " + movie.authorid);
+    let isSameAuthor ="";
+    console.log("just out of reached in if")
+    console.log(req.user)
+    if(req.user == undefined){
+     
+      console.log("reached here")
+      isSameAuthor = "isNotauther";
+    }
+    else{
+      console.log("reached in if")
+      isSameAuthor =
+       req.user._id == movie.authorid ? "isauther" : "isNotauther";
+
+    }
+    
+   
     console.log(isSameAuthor);
     res.render("view", {
       movies: movie,
@@ -732,9 +722,9 @@ app.post("/del/movies/:id", checkAuthenticated, async (req, res) => {
     const filePath = req.body.imagepath;
 
     // Check if the file exists before attempting to delete
-    if (fs.existsSync(filePath)) {
+    if (fs.existsSync("public"+filePath)) {
       // Remove the file
-      fs.unlinkSync(filePath);
+      fs.unlinkSync("public"+filePath);
       console.log(`File ${filePath} has been deleted.`);
     } else {
       console.log(`File ${filePath} does not exist.`);
@@ -744,7 +734,6 @@ app.post("/del/movies/:id", checkAuthenticated, async (req, res) => {
     if (!deletedMovie) {
       return res.status(404).json({ error: "Movie not found" });
     }
-
     res.redirect("/mylist/" + req.user._id);
   } catch (error) {
     console.error(error);
@@ -762,7 +751,7 @@ app.post("/del/movies/:id", checkAuthenticated, async (req, res) => {
  */
 app.get(
   "/api/applyfilter/:page/:perPage",
-  checkAuthenticated,
+  
   celebrate({
     [Segments.QUERY]: Joi.object().keys({
       genres: Joi.alternatives().try(

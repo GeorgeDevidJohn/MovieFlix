@@ -11,19 +11,30 @@
   <!-- Body of the HTML document -->
   <body>
     <!-- Handlebars template: Iterate over users and check if user ID exists -->
-    {{#each users}}
-      {{#if this._id}}
+   
         <!-- Navigation Bar Header for authenticated user -->
         <header class="navbar">
           <div class="container">
 
             <!-- User Greeting and Logo -->
+             {{#each users}}
+      {{#if this._id}}
             <div class="logo">Hi {{this.name}} !</div>
-
+   {{/if}}
+    {{/each}}
+           {{#unless users}}
+      
+            <div class="logo">Welcome</div>
+  
+    {{/unless}}
             <!-- Navigation Links -->
             <nav>
               <ul>
+                  {{#each users}}
+      {{#if this._id}}
                 <li><a href="/mylist/{{this._id}}">Mylist</a></li>
+                   {{/if}}
+    {{/each}}
                 <li><a href="/">Home</a></li>
                 <li><a href="/api/movies/type?page=1&perPage=20&type=movie">Movies</a></li>
                 <li><a href="/api/movies/type?page=1&perPage=20&type=series">Series</a></li>
@@ -54,18 +65,32 @@
 
                 <!-- Logout Link -->
                 <li>
-                  <a
+
+
+                   {{#each users}}
+      {{#if this._id}}
+                <a
                     style="font-weight: 900; color:rgb(188, 10, 19)"
                     href="/logout"
                   >Log Out</a>
+                   {{/if}}
+    {{/each}}
+                    {{#unless users}}
+     
+                <a
+                    style="font-weight: 900; color:rgb(188, 10, 19)"
+                    href="/login"
+                  >Log In</a>
+                  
+    {{/unless}}
+    
+                  
                 </li>
               </ul>
             </nav>
 
           </div>
         </header>
-      {{/if}}
-    {{/each}}
 
     <!-- JavaScript to update search link based on input -->
     <script>
