@@ -554,6 +554,7 @@ a .page-link {
 /* paging......css */
 body {
     font-family: Arial, sans-serif;
+   
 }
 
 .pagination-container {
@@ -620,13 +621,15 @@ button {
    
 
     .main-content{
-        display: flex;
-        justify-content: space-between;margin: 1em 0em;
+        display: block;
+        justify-content: space-between;margin: 1em 2em;
         position:relative;
         flex-direction: column;
     }
 
-
+body{
+    display: block;
+}
 
 
 .slider_container{
