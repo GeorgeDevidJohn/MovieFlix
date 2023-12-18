@@ -534,6 +534,12 @@ a .page-link {
     font-size: 28px;
     font-weight: bold;
 }
+.myclass{
+    display: flex;
+    justify-content: space-between;margin: 0em 7em;
+    position:relative;
+    flex-direction: column;
+}
 
 .close:hover,
 .close:focus {
@@ -692,5 +698,27 @@ h4{
     margin: 0px;
     font-size: 10px;
 }
+.myclass{
+    display: flex;
+    justify-content: space-between;
+    margin: 14em 4em 1em;
+    position: relative;
+    font-size: 8px;
+    flex-direction: column;
+}
+.modal{
+    display: none;
+    top: 40;
+    padding: 9px;
+    left: -182px;
+    overflow: hidden;
+    width: max-content;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.692);
+    }
+
+  .modal-content{
+    width: 55%;
+  }  
 
 }

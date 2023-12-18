@@ -64,10 +64,7 @@
             </div>
         </section>
     </section>
-    <div style="display: flex;
-    justify-content: space-between;margin: 0em 7em;
-    position:relative;
-    flex-direction: column;"><div style="display: flex;
+    <div class="myclass" ><div style="display: flex;
     justify-content: space-between;">  <h2 style="color: white;">My List</h2> 
 	<button style="background-color: #e81e1e;" class="btn btn-primary" id="openModalBtn" data-toggle="modal" data-target="#exampleModal">Add Movie</button> </div>
     <div  style="  border-top: 8px solid #e81e1e;
@@ -77,7 +74,7 @@
 
 
 
-    <div class="wrapper">
+    <div  style="padding: 20px;" class="wrapper">
 		 {{#each movies}}
               {{#each this}}
               {{#if this.[_id] }}
