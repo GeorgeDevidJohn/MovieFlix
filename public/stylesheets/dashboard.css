@@ -106,6 +106,11 @@ body {
     word-break: break-all;
     font-weight: 100;
 }
+.slide .caption img{
+    height: 40px;
+    width: 40px;
+    margin-right:1em
+}
 
 .slide .watch_butn {
     position: absolute;
@@ -265,6 +270,19 @@ body {
 .details h1,
 .details h2 {
     font-weight: 700;
+}
+.filter-data{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    column-gap: 3em;
+    border-radius: 30px;
+    margin: auto 10%;
+    color: white;
+    align-items: center;
+    width: auto;
+    padding: 27px;
+    background: #d8d7d61f;
 }
 
 .details h1 {
@@ -525,7 +543,12 @@ a .page-link {
 }
 
 
-
+.main-content{
+    display: flex;
+    justify-content: space-between;margin: 1em 7em;
+    position:relative;
+    flex-direction: column;
+}
 
 
 /* paging......css */
@@ -570,4 +593,98 @@ button {
     padding: 9px;
     cursor: pointer;
     background-color: #f0f0f066;
+}
+@media (max-width: 480px) {
+    .filter-data{
+        display: grid;grid-template-columns: repeat(2, .1fr);      
+        justify-content: center;     
+        border-radius: 30px;
+        color: white;
+        align-items: center;
+        width: auto;
+        padding: 27px 50px;
+        background: #d8d7d61f;
+    }
+    .filtermargin{
+     margin-top: 7em !important;
+    }
+    .filter-data button{
+        border-color: red !important;
+        width: 7em;
+        padding: 4px;
+        font-size: 10px;
+        background-color: #8f0b0b;
+        color: white;
+      
+    }
+   
+
+    .main-content{
+        display: flex;
+        justify-content: space-between;margin: 1em 0em;
+        position:relative;
+        flex-direction: column;
+    }
+
+
+
+
+.slider_container{
+    display: none;
+}
+
+.image-with-gradient img{
+    height: 50%;
+}
+.wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 0px;
+    display: grid;grid-template-columns: repeat(2, 5fr);      
+    justify-content: center;    
+    align-content: center;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+.heading{
+    font-size: 15px;
+}
+
+.heading h2{
+    font-size: 15px;
+}
+h4{
+    font-size: 15px;
+}
+.wrapper .card{
+ width: 100%;
+ height: 10em;
+}
+.details {
+    position: absolute;
+    bottom: -130%;
+    left: 0;
+    width: 100%;
+    font-size: 10px;
+    overflow-y: hidden;
+    height: 36vh;
+    padding: 1.5em 1.5em 2em;
+    background: #000a;
+    backdrop-filter: blur(16px) saturate(120%);
+    transition: .3s;
+    color: #fff;
+    z-index: 2;
+}
+.pagination-container {
+    display: flex;
+    width: 90%;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0px;
+    font-size: 10px;
+}
+
 }

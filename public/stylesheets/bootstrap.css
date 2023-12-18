@@ -18,6 +18,28 @@
 
 }
 
+.bg-glass{
+  backdrop-filter: blur(10px);
+    background-color: rgb(255 255 255 / 30%);
+    width: 500px;
+}
+@media (max-width: 480px) {
+
+  .bg-glass{
+  width: 100%;
+  }
+  .opacity-70{
+    display: none;
+  }
+  .mb-5{
+    margin-bottom: 0px !important;
+  }
+  .display-5{
+    font-size: 1.5em;
+  }
+}
+
+
 .container {
   max-width: 1350px !important;
 }
