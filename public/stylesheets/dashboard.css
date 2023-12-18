@@ -682,7 +682,7 @@ h4{
     z-index: 2;
 }
 .card:hover .details {
-    bottom: -40%;
+    bottom: -80%;
 }
 .pagination-container {
     display: flex;
