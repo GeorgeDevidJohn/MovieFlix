@@ -6,6 +6,8 @@ Certainly! Here's a sample README file for your Movie Bazzar project:
 
 The Movie Bazzar project is a Node/Express Web API that showcases a meticulous integration of cutting-edge technologies, delivering a secure, efficient, and user-friendly web application for managing movie listings and details. The project utilizes MongoDB Atlas as the robust database backbone, with comprehensive guides on cluster creation, security measures, and application connection.
 
+Demployed link : https://movieflix-tltj.onrender.com/
+
 ## Technologies Used:
 
 - **Express.js**: For building the server and handling API routes.
